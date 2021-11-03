@@ -1,0 +1,511 @@
+swagger: '2.0'
+info:
+  description: Backend Test API
+  version: 1.0.0
+  title: Backend Test API
+basePath: /api/
+
+tags:
+  - name: Tag
+    description: Manage Tag
+  - name: Topic
+    description: Manage Topic
+  - name: News
+    description: Manage News
+
+paths:
+  /tag:
+    get:
+      tags:
+        - Tag
+      summary: List Tag
+      description: 'Get List Tag'
+      operationId: ListTag
+      parameters:
+        - in: query
+          name: limit
+          type: integer
+          description: Data limitation in the list, by default will be 100. Maximum value is 100.
+        - in: query
+          name: page
+          type: integer
+          description: Change the number from 1 to 2 to fetch the next page, etc.
+        - in: query
+          name: name
+          type: string
+          description: Put it to search the by tag name
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+    post:
+      tags:
+        - Tag
+      summary: Create Tag
+      description: 'Create Tag with this API'
+      operationId: CreateTag
+      parameters:
+        - in: formData
+          name: name
+          type: string
+          description: Add Tag Name
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+  /tag/{id}:
+    delete:
+      tags:
+        - Tag
+      summary: Delete Tag
+      description: 'Delete Tag with this API'
+      operationId: DeleteTag
+      parameters:
+        - in: path
+          name: id
+          required: true
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+    put:
+      tags:
+        - Tag
+      summary: Update Tag
+      description: 'Update Tag with this API'
+      operationId: EditTag
+      parameters:
+        - in: path
+          name: id
+          required: true
+        - in: formData
+          name: name
+          type: string
+          description: Tag Name
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+  /topic:
+    get:
+      tags:
+        - Topic
+      summary: List Topic
+      description: 'Get List Topic'
+      operationId: ListTopic
+      parameters:
+        - in: query
+          name: limit
+          type: integer
+          description: Data limitation in the list, by default will be 100. Maximum value is 100.
+        - in: query
+          name: page
+          type: integer
+          description: Change the number from 1 to 2 to fetch the next page, etc.
+        - in: query
+          name: name
+          type: string
+          description: Put it to search the by topic name
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+    post:
+      tags:
+        - Topic
+      summary: Create Topic
+      description: 'Create Topic with this API'
+      operationId: CreateTopic
+      parameters:
+        - in: formData
+          name: name
+          type: string
+          description: Add Tag Name
+        - in: formData
+          name: description
+          type: string
+          description: Add description Name
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+  /topic/{id}:
+    delete:
+      tags:
+        - Topic
+      summary: Delete Topic
+      description: 'Delete Topic with this API'
+      operationId: DeleteTopic
+      parameters:
+        - in: path
+          name: id
+          required: true
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+    put:
+      tags:
+        - Topic
+      summary: Update Topic
+      description: 'Update Topic with this API'
+      operationId: EditTopic
+      parameters:
+        - in: path
+          name: id
+          required: true
+        - in: formData
+          name: name
+          type: string
+          description: Topic Name
+        - in: formData
+          name: description
+          type: string
+          description: Topic Description
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+  /newslist:
+    post:
+      tags:
+        - News
+      summary: List News
+      description: 'Get List News'
+      operationId: ListNews
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: limit
+          type: integer
+          description: Data limitation in the list, by default will be 100. Maximum value is 100.
+        - in: formData
+          name: page
+          type: integer
+          description: Change the number from 1 to 2 to fetch the next page, etc.
+        - in: formData
+          name: status
+          type: string
+          enum: [
+              draft,
+              publish,
+              deleted
+            ]
+          description: Put it to filter the by status
+        - in: formData
+          name: topic
+          type: integer
+          description: Topic Id - You can get id from list topic
+      
+      security:
+        - ApiKeyAuth: []
+    
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+  /news/{id}:
+    delete:
+      tags:
+        - News
+      summary: Delete News
+      description: 'Delete News with this API'
+      operationId: DeleteNews
+      parameters:
+        - in: path
+          name: id
+          required: true
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+    put:
+      tags:
+        - News
+      summary: Update News
+      description: 'Update News with this API'
+      operationId: EditNews
+      parameters:
+        - in: path
+          name: id
+          required: true
+        - in: formData
+          name: title
+          type: string
+          required: false
+          description: Add title
+        - in: formData
+          name: description
+          type: string
+          required: false
+          description: Add description
+        - in: formData
+          name: content
+          type: string
+          required: false
+          description: Add Content
+        - in: formData
+          name: status
+          type: string
+          required: false
+          enum: [
+              draft,
+              publish
+            ]
+          description: Add Status
+        - in: formData
+          name: tag
+          required: false
+          type: array  
+          items:
+            type: string
+            enum: [1, 2, 3]
+          description: Add tag id, you can get list from tag list
+        - in: formData
+          name: topic
+          required: false
+          type: array  
+          items:
+            type: string
+            enum: [1, 2, 3]
+          description: Add topic id, you can get list from topic list
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+  /news:
+     post:
+      tags:
+        - News
+      summary: Create News
+      description: 'Create News with this API'
+      operationId: CreateNews
+      parameters:
+        - in: formData
+          name: title
+          type: string
+          required: true
+          description: Add title
+        - in: formData
+          name: description
+          type: string
+          required: true
+          description: Add description
+        - in: formData
+          name: content
+          type: string
+          required: true
+          description: Add Content
+        - in: formData
+          name: status
+          type: string
+          required: true
+          enum: [
+              draft,
+              publish
+            ]
+          description: Add Status
+        - in: formData
+          name: tag
+          required: true
+          type: array  
+          items:
+            type: string
+            enum: [1, 2, 3]
+          description: Add tag id, you can get list from tag list
+        - in: formData
+          name: topic
+          required: false
+          type: array  
+          items:
+            type: string
+            enum: [1, 2, 3]
+          description: Add topic id, you can get list from topic list
+        
+      security:
+        - ApiKeyAuth: []
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          description: Unautorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        '409':
+          description: Error status code
+
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    name: Authorization
+    in: header
