@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>{{ config('app.name') }} | Frontend API's Swagger</title>
+    <title>{{ config('app.name') }} | Backend Test API's</title>
     <link href="{{asset('swagger/style.css')}}" rel="stylesheet">
 </head>
 <body>
